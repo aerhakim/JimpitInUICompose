@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.example.jimpitinuicompose.ui.theme.BlackGray
+import com.example.jimpitinuicompose.ui.theme.BlackTransparent
 import com.example.jimpitinuicompose.ui.theme.poppins
 
 
@@ -31,7 +31,7 @@ fun AgendaCard(
         elevation = 0.dp,
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(220.dp)
     ) {
         Box {
             Image(
@@ -49,8 +49,8 @@ fun AgendaCard(
                 DifficultySurface(item.category)
                 ShortInfoSurface(
                     title = item.title,
-                    times = item.time,
-                    servings = item.date
+                    time = item.time,
+                    date = item.date
                 )
             }
         }
@@ -82,11 +82,11 @@ fun DifficultySurface(level: String) {
 @Composable
 fun ShortInfoSurface(
     title: String,
-    times: String,
-    servings: String
+    date: String,
+    time: String
 ) {
     Surface(
-        color = BlackGray.copy(0.9f),
+        color = BlackTransparent.copy(0.9f),
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .fillMaxWidth()
@@ -98,13 +98,13 @@ fun ShortInfoSurface(
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 color = Color.White,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 fontFamily = poppins,
                 fontWeight = FontWeight.Medium
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "$times | $servings",
+                text = "$date | $time",
                 color = Color.Gray,
                 fontSize = 14.sp,
                 fontFamily = poppins

@@ -48,13 +48,9 @@ fun HomeScreen() {
             .background(White)
             .fillMaxSize()
     ) {
-        val scrollState = rememberScrollState()
-        Column(
-            modifier = Modifier.scrollable(
-                state = scrollState,
-                orientation = Orientation.Vertical
-        )
-        ){
+
+        Column()
+        {
             AppBarSection()
             AutoSliding()
             Text(
@@ -391,8 +387,11 @@ fun AgendaList() {
 
     )
 
-    LazyRow(
-        modifier = Modifier.padding(15.dp)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(210.dp)
+            .padding(15.dp)
     ) {
         items(agenda) { agenda ->
             AgendaCard(item = agenda)
