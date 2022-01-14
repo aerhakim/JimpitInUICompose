@@ -1,6 +1,7 @@
 package com.example.jimpitinuicompose.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -9,34 +10,37 @@ import androidx.compose.ui.unit.sp
 import com.example.jimpitinuicompose.R
 
 
-val gothicA1 = FontFamily(
+val poppins = FontFamily(
     listOf(
-        Font(R.font.gothica1_regular, FontWeight.Normal),
-        Font(R.font.gothica1_medium, FontWeight.Medium),
-        Font(R.font.gothica1_semibold, FontWeight.SemiBold),
-        Font(R.font.gothica1_bold, FontWeight.Bold),
-        Font(R.font.gothica1_black, FontWeight.Black),
+        Font(R.font.poppins_regular, FontWeight.Normal),
+        Font(R.font.poppins_semibold, FontWeight.Bold),
     )
 )
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
-        color = AquaBlue,
-        fontFamily = gothicA1,
+        color = Gray,
+        fontFamily = poppins,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
+    body2 = TextStyle(
+        color = Gray,
+        fontFamily = poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
     h1 = TextStyle(
-        color = TextWhite,
-        fontFamily = gothicA1,
+        color = TextBlack,
+        fontFamily = poppins,
         fontWeight = FontWeight.Bold,
-        fontSize = 22.sp
+        fontSize = 16.sp
     ),
     h2 = TextStyle(
-        color = TextWhite,
-        fontFamily = gothicA1,
+        color = Color.Black,
+        fontFamily = poppins,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 14.sp
     )
 )
