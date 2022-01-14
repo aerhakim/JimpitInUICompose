@@ -1,4 +1,4 @@
-package com.example.jimpitinuicompose
+package com.example.jimpitinuicompose.model
 
 import androidx.annotation.DrawableRes
 

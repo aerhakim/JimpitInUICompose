@@ -1,4 +1,4 @@
-package com.example.jimpitinuicompose
+package com.example.jimpitinuicompose.model
 
 class Image
 

@@ -1,15 +1,12 @@
-package com.example.jimpitinuicompose.ui
+package com.example.jimpitinuicompose.ui.screen
 
 
 import androidx.compose.foundation.lazy.items
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -21,17 +18,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
-import androidx.compose.ui.viewinterop.AndroidView
-import com.example.jimpitinuicompose.*
 import com.example.jimpitinuicompose.R
+import com.example.jimpitinuicompose.model.Agenda
+import com.example.jimpitinuicompose.model.BottomMenuContent
+import com.example.jimpitinuicompose.model.image
+import com.example.jimpitinuicompose.ui.component.AgendaCard
 import com.example.jimpitinuicompose.ui.theme.*
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.delay
@@ -48,36 +43,58 @@ fun HomeScreen() {
             .background(White)
             .fillMaxSize()
     ) {
-
-        Column()
+        LazyColumn()
         {
-            AppBarSection()
-            AutoSliding()
-            Text(
-                modifier = Modifier
-                    .absolutePadding(left = 15.dp)
-                    .absolutePadding(bottom = 10.dp),
-                text = "Iuran",
-                style = MaterialTheme.typography.h1,
-                color = TextBlack
-            )
-            Sampah()
-            Jimpitan()
-            Text(
-                modifier = Modifier
-                    .absolutePadding(left = 15.dp)
-                    .absolutePadding(top = 5.dp),
-                text = "Agenda",
-                style = MaterialTheme.typography.h1,
-                color = TextBlack
-            )
-            AgendaList()
+            item {
+                Spacer(modifier = Modifier.height(90.dp))
+            }
+            item {
+                AutoSliding()
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .absolutePadding(left = 15.dp)
+                        .absolutePadding(bottom = 10.dp),
+                    text = "Iuran",
+                    style = MaterialTheme.typography.h1,
+                    color = TextBlack
+                )
+            }
+            item {
+                Sampah()
+            }
+            item {
+                Jimpitan()
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .absolutePadding(left = 15.dp)
+                        .absolutePadding(top = 5.dp),
+                    text = "Agenda",
+                    style = MaterialTheme.typography.h1,
+                    color = TextBlack
+                )
+            }
+            item {
+                AgendaList()
+            }
+            item {
+                Spacer(modifier = Modifier.height(80.dp))
+            }
+
+
         }
         BottomMenu(items = listOf(
             BottomMenuContent("Home", R.drawable.ic_home),
             BottomMenuContent("Transaksi", R.drawable.ic_history),
             BottomMenuContent("Profile", R.drawable.ic_user),
         ), modifier = Modifier.align(Alignment.BottomCenter))
+        Column(modifier = Modifier
+            .align(Alignment.TopCenter)) {
+            AppBarSection()
+        }
     }
 }
 
@@ -91,6 +108,7 @@ fun AppBarSection(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
+            .background(White)
             .padding(15.dp)
     ) {
         Column(
@@ -387,11 +405,8 @@ fun AgendaList() {
 
     )
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(210.dp)
-            .padding(15.dp)
+    LazyRow(
+        modifier = Modifier.padding(15.dp)
     ) {
         items(agenda) { agenda ->
             AgendaCard(item = agenda)

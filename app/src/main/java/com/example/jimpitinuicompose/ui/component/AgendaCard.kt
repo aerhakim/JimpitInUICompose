@@ -1,7 +1,6 @@
-package com.example.jimpitinuicompose
+package com.example.jimpitinuicompose.ui.component
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,13 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
-import com.example.jimpitinuicompose.ui.theme.BlackTransparent
+import com.example.jimpitinuicompose.model.Agenda
+import com.example.jimpitinuicompose.ui.theme.TextBlack
 import com.example.jimpitinuicompose.ui.theme.poppins
 
 
@@ -30,12 +29,12 @@ fun AgendaCard(
         shape = RoundedCornerShape(10.dp),
         elevation = 0.dp,
         modifier = Modifier
-            .fillMaxWidth()
-            .height(220.dp)
+            .size(350.dp, 220.dp)
+            .absolutePadding(left = 15.dp)
     ) {
         Box {
             Image(
-                painter = rememberImagePainter(item.image),
+                painter = painterResource(item.image),
                 contentDescription = item.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -86,7 +85,7 @@ fun ShortInfoSurface(
     time: String
 ) {
     Surface(
-        color = BlackTransparent.copy(0.9f),
+        color = TextBlack.copy(0.7f),
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .fillMaxWidth()
