@@ -1,38 +1,76 @@
 package com.example.jimpitinuicompose.ui
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jimpitinuicompose.ui.theme.JimpitINUIComposeTheme
+import androidx.compose.ui.unit.dp
+import com.example.jimpitinuicompose.ui.theme.*
+import com.example.jimpitinuicompose.R
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            JimpitINUIComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
+
+@ExperimentalFoundationApi
+@Composable
+fun HomeScreen() {
+    Box(
+        modifier = Modifier
+            .background(DeepBlue)
+            .fillMaxSize()
+    ) {
+        Column {
+            GreetingSection()
+
         }
     }
 }
 
+
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun GreetingSection(
+    name: String = "AR Hakim"
+) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(15.dp)
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Halo,",
+                style = MaterialTheme.typography.h2
+            )
+            Text(
+                text = name,
+                style = MaterialTheme.typography.h2
+            )
+        }
+        Icon(
+            painter = painterResource(id = R.drawable.ic_notifications),
+            contentDescription = "Notification",
+            tint = Color.White,
+            modifier = Modifier.size(24.dp)
+        )
+    }
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    JimpitINUIComposeTheme {
-        Greeting("Android")
+    JimpitInTheme() {
+        GreetingSection()
     }
 }
